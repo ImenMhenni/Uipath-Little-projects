@@ -92,7 +92,7 @@
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="CreateXmlFromExcel" sap:VirtualizedContainerService.HintSize="1057,786.04" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="sd:DataTable" Name="MyContent" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dtMyContent" />
       <Variable x:TypeArguments="sxl:XDocument" Name="XmlFormat" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
@@ -100,37 +100,38 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[MyContent]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="468,120" sap2010:WorkflowViewState.IdRef="ReadRange_2" SheetName="Data" WorkbookPath="Results\Result.xlsx" />
+    <ui:LogMessage DisplayName="Log Message-Start" sap:VirtualizedContainerService.HintSize="468,124" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Start&quot;]" />
+    <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[dtMyContent]" DisplayName="Get Data " sap:VirtualizedContainerService.HintSize="468,120" sap2010:WorkflowViewState.IdRef="ReadRange_2" SheetName="Data" WorkbookPath="Results\Result.xlsx" />
     <Sequence DisplayName="Sequence -Simple xml" sap:VirtualizedContainerService.HintSize="468,197" sap2010:WorkflowViewState.IdRef="Sequence_3">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Assign sap:VirtualizedContainerService.HintSize="434,105" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign DisplayName="Assign 1" sap:VirtualizedContainerService.HintSize="434,105" sap2010:WorkflowViewState.IdRef="Assign_1">
         <Assign.To>
           <OutArgument x:TypeArguments="sxl:XDocument">[XmlFormat]</OutArgument>
         </Assign.To>
         <Assign.Value>
-          <InArgument x:TypeArguments="sxl:XDocument">[New XDocument(New XElement("Clients", MyContent.AsEnumerable().Select(Function(row) New XElement("Client", New XElement("Nom", row("First Name").ToString()), New XElement("Email", row("Email").ToString())))))]</InArgument>
+          <InArgument x:TypeArguments="sxl:XDocument">[New XDocument(New XElement("Clients", dtMyContent.AsEnumerable().Select(Function(row) New XElement("Client", New XElement("Nom", row("First Name").ToString()), New XElement("Email", row("Email").ToString())))))]</InArgument>
         </Assign.Value>
       </Assign>
     </Sequence>
-    <Sequence DisplayName="Sequence -Simple xml with attributs" sap:VirtualizedContainerService.HintSize="468,310" sap2010:WorkflowViewState.IdRef="Sequence_5">
+    <Sequence DisplayName="Sequence -Simple xml with attributs" sap:VirtualizedContainerService.HintSize="468,197" sap2010:WorkflowViewState.IdRef="Sequence_5">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Assign sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_2">
+      <Assign DisplayName="Assign2" sap:VirtualizedContainerService.HintSize="434,105" sap2010:WorkflowViewState.IdRef="Assign_2">
         <Assign.To>
           <OutArgument x:TypeArguments="sxl:XDocument">[XmlFormat]</OutArgument>
         </Assign.To>
         <Assign.Value>
-          <InArgument x:TypeArguments="sxl:XDocument">[New XDocument(New XElement("Clients", MyContent.AsEnumerable().Select(Function(row) New XElement("Client", New XAttribute("Nom", row("First Name").ToString()), New XAttribute("Email", row("Email").ToString())))))]</InArgument>
+          <InArgument x:TypeArguments="sxl:XDocument">[New XDocument(New XElement("Clients", dtMyContent.AsEnumerable().Select(Function(row) New XElement("Client", New XAttribute("Nom", row("First Name").ToString()), New XAttribute("Email", row("Email").ToString())))))]</InArgument>
         </Assign.Value>
       </Assign>
-      <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="434,113" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[XmlFormat.ToString]" />
     </Sequence>
+    <ui:LogMessage DisplayName="Log Message-END" sap:VirtualizedContainerService.HintSize="468,115" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Trace" Message="[&quot;END&quot;]" />
   </Sequence>
 </Activity>
