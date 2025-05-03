@@ -32,6 +32,7 @@
       <x:String>System.Xml.Serialization</x:String>
       <x:String>System.Reflection</x:String>
       <x:String>System.Linq.Expressions</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -88,9 +89,10 @@
       <AssemblyReference>System.Linq.Parallel</AssemblyReference>
       <AssemblyReference>System.Collections.Immutable</AssemblyReference>
       <AssemblyReference>System.Linq.Queryable</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="CreateXmlFromExcel" sap:VirtualizedContainerService.HintSize="1057,786.04" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="CreateXmlFromExcel" sap:VirtualizedContainerService.HintSize="1040,941" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="dtMyContent" />
       <Variable x:TypeArguments="sxl:XDocument" Name="XmlFormat" />
@@ -132,6 +134,7 @@
         </Assign.Value>
       </Assign>
     </Sequence>
+    <ui:WriteTextFile File="{x:Null}" DisplayName="Write Text File" FileName="Results\Result.xml" sap:VirtualizedContainerService.HintSize="468,165" sap2010:WorkflowViewState.IdRef="WriteTextFile_1" Text="[XmlFormat.ToString]" />
     <ui:LogMessage DisplayName="Log Message-END" sap:VirtualizedContainerService.HintSize="468,115" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Trace" Message="[&quot;END&quot;]" />
   </Sequence>
 </Activity>
