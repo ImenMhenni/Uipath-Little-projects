@@ -1,0 +1,12 @@
+<Clients>
+  <Client Nom="John" Email="jsmith@itsolutions.co.uk" />
+  <Client Nom="Jane" Email="jdorsey@mc.com" />
+  <Client Nom="Albert" Email="kipling@waterfront.com" />
+  <Client Nom="Michael" Email="mrobertson@mc.com" />
+  <Client Nom="Doug" Email="dderrick@timepath.co.uk" />
+  <Client Nom="Jessie" Email="jmarlowe@aperture.us" />
+  <Client Nom="Stan" Email="shamm@sugarwell.org" />
+  <Client Nom="Michelle" Email="mnorton@aperture.us" />
+  <Client Nom="Stacy" Email="sshelby@techdev.com" />
+  <Client Nom="Lara" Email="lpalmer@timepath.co.uk" />
+</Clients>

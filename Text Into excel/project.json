@@ -7,6 +7,7 @@
     "UiPath.DocumentUnderstanding.Activities": "[2.14.0]",
     "UiPath.Excel.Activities": "[2.23.5]",
     "UiPath.System.Activities": "[22.10.4]",
+    "UiPath.UIAutomation.Activities": "[25.2.1-preview]",
     "UiPath.Word.Activities": "[2.0.1]",
     "UiPathTeam.XML.Activities": "[1.1.0]"
   },
@@ -16,6 +17,7 @@
   "studioVersion": "25.0.161.0",
   "projectVersion": "1.0.0",
   "runtimeOptions": {
+    "exceptionHandlerWorkflow": "GlobalHandler.xaml",
     "autoDispose": false,
     "netFrameworkLazyLoading": false,
     "isPausable": true,
